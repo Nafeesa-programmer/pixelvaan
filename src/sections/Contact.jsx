@@ -11,7 +11,7 @@ const services = [
 ];
 
 const API_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+  import.meta.env.VITE_API_URL || "https://pixelvaan.onrender.com";
 
 function Contact() {
   const [selectedService, setSelectedService] = useState("");
@@ -146,7 +146,6 @@ function Contact() {
     >
       <div className="mx-auto max-w-[1440px]">
 
-        {/* SECTION HEADER */}
         <div className="border-t border-black/20 pt-6">
           <div className="flex items-center gap-3">
             <span className="h-1.5 w-1.5 rounded-full bg-black" />
@@ -165,7 +164,6 @@ function Contact() {
           </div>
         </div>
 
-        {/* TITLE */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -196,7 +194,6 @@ function Contact() {
           </h2>
         </motion.div>
 
-        {/* CONTENT */}
         <div
           className="
             mt-24
@@ -208,7 +205,6 @@ function Contact() {
           "
         >
 
-          {/* LEFT */}
           <div>
             <span
               className="
@@ -266,14 +262,12 @@ function Contact() {
             </a>
           </div>
 
-          {/* FORM */}
           <form
             onSubmit={handleSubmit}
             noValidate
             className="space-y-0"
           >
 
-            {/* NAME */}
             <div className="border-b border-black/20">
               <label
                 htmlFor="name"
@@ -319,7 +313,6 @@ function Contact() {
               )}
             </div>
 
-            {/* EMAIL */}
             <div className="border-b border-black/20">
               <label
                 htmlFor="email"
@@ -365,7 +358,6 @@ function Contact() {
               )}
             </div>
 
-            {/* COMPANY */}
             <div className="border-b border-black/20">
               <label
                 htmlFor="company"
@@ -405,7 +397,6 @@ function Contact() {
               />
             </div>
 
-            {/* SERVICE */}
             <div className="border-b border-black/20 pt-6">
               <span
                 className="
@@ -474,7 +465,6 @@ function Contact() {
               )}
             </div>
 
-            {/* MESSAGE */}
             <div className="border-b border-black/20">
               <label
                 htmlFor="message"
@@ -521,7 +511,6 @@ function Contact() {
               )}
             </div>
 
-            {/* ERROR */}
             {serverError && (
               <motion.div
                 initial={{
@@ -547,7 +536,6 @@ function Contact() {
               </motion.div>
             )}
 
-            {/* SUBMIT */}
             <motion.button
               whileHover={{
                 scale:
@@ -615,7 +603,6 @@ function Contact() {
               </span>
             </motion.button>
 
-            {/* SUCCESS */}
             {status === "success" && (
               <motion.div
                 initial={{
@@ -658,7 +645,6 @@ function Contact() {
           </form>
         </div>
 
-        {/* FOOTER */}
         <footer
           className="
             mt-32
