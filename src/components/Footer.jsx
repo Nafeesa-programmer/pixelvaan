@@ -1,102 +1,79 @@
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-const links = [
+const navigation = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/pixelvaan/",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/pixelvaan/",
+  },
+];
+
 function Footer() {
   return (
-    <footer className="bg-[#050505] px-[clamp(20px,5vw,72px)] py-8 text-white">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="border-t border-white/15 pt-16">
-          <div className="grid gap-16 lg:grid-cols-[1.4fr_0.6fr_0.8fr]">
+    <footer className="relative overflow-hidden bg-black px-[clamp(20px,5vw,72px)] py-16 text-white sm:py-20 md:py-24">
+      <div className="mx-auto max-w-[1500px]">
+        <div className="mb-16 border-t border-white/10 pt-14 md:mb-24 md:pt-16">
+          <div className="grid gap-16 md:grid-cols-[1.4fr_0.6fr_0.6fr] md:gap-10">
             <div>
               <a
                 href="#home"
-                className="group flex w-fit items-center gap-3"
+                className="group inline-flex items-center gap-4"
               >
-                <span className="text-[clamp(3rem,7vw,7rem)] font-medium leading-none tracking-[-0.07em]">
+                <span className="text-[clamp(64px,9vw,130px)] font-medium leading-[0.8] tracking-[-0.075em]">
                   pixelvaan
                 </span>
 
-                <span
-                  className="
-                    flex h-10 w-10
-                    items-center justify-center
-                    rounded-full
-                    border border-white/20
-                    transition-all duration-500
-                    group-hover:rotate-45
-                    group-hover:bg-white
-                    group-hover:text-black
-                  "
-                >
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 transition-all duration-500 group-hover:rotate-45 group-hover:bg-white group-hover:text-black">
                   <ArrowUpRight size={18} strokeWidth={1.5} />
                 </span>
               </a>
 
-              <p className="mt-8 max-w-md text-sm leading-7 text-white/60 md:text-base">
-                Digital experiences built with clarity,
-                character, and purpose.
+              <p className="mt-10 max-w-[520px] text-base leading-7 text-white/45">
+                Digital experiences built with clarity, character, and purpose.
               </p>
 
               <a
                 href="mailto:hello@pixelvaan.com"
-                className="
-                  group mt-8
-                  flex w-fit items-center gap-3
-                  text-sm font-medium text-white
-                "
+                className="group mt-10 inline-flex items-center gap-4 border-b border-white/20 pb-2 text-base font-medium transition-colors duration-300 hover:border-white"
               >
-                <span className="border-b border-white/30 pb-1 transition-colors duration-300 group-hover:border-white">
-                  hello@pixelvaan.com
-                </span>
+                hello@pixelvaan.com
 
                 <ArrowUpRight
-                  size={15}
+                  size={16}
                   strokeWidth={1.5}
-                  className="
-                    transition-transform duration-500
-                    group-hover:translate-x-1
-                    group-hover:-translate-y-1
-                  "
+                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
               </a>
             </div>
 
             <div>
-              <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/40">
+              <p className="mb-7 text-[10px] font-medium tracking-[0.22em] text-white/35 uppercase">
                 Navigate
-              </span>
+              </p>
 
-              <nav className="mt-7 flex flex-col gap-4">
-                {links.map((link) => (
+              <nav className="flex flex-col items-start gap-5">
+                {navigation.map((item) => (
                   <a
-                    key={link.label}
-                    href={link.href}
-                    className="
-                      group flex w-fit items-center gap-2
-                      text-sm text-white/65
-                      transition-colors duration-300
-                      hover:text-white
-                    "
+                    key={item.label}
+                    href={item.href}
+                    className="group flex items-center gap-2 text-sm text-white/85 transition-colors duration-300 hover:text-white"
                   >
-                    <span>{link.label}</span>
+                    {item.label}
 
                     <ArrowUpRight
                       size={13}
                       strokeWidth={1.5}
-                      className="
-                        opacity-0
-                        transition-all duration-300
-                        group-hover:translate-x-0.5
-                        group-hover:-translate-y-0.5
-                        group-hover:opacity-100
-                      "
+                      className="opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
                     />
                   </a>
                 ))}
@@ -104,40 +81,36 @@ function Footer() {
             </div>
 
             <div>
-              <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/40">
+              <p className="mb-7 text-[10px] font-medium tracking-[0.22em] text-white/35 uppercase">
                 Connect
-              </span>
+              </p>
 
-              <div className="mt-7 flex flex-col gap-4">
-                <a
-                  href="#home"
-                  className="
-                    text-sm text-white/65
-                    transition-colors duration-300
-                    hover:text-white
-                  "
-                >
-                  Instagram
-                </a>
+              <div className="flex flex-col items-start gap-5">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-2 text-sm text-white/85 transition-colors duration-300 hover:text-white"
+                  >
+                    {social.label}
 
-                <a
-                  href="#home"
-                  className="
-                    text-sm text-white/65
-                    transition-colors duration-300
-                    hover:text-white
-                  "
-                >
-                  LinkedIn
-                </a>
+                    <ArrowUpRight
+                      size={13}
+                      strokeWidth={1.5}
+                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </a>
+                ))}
               </div>
 
               <div className="mt-12">
-                <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/40">
+                <p className="mb-5 text-[10px] font-medium tracking-[0.22em] text-white/35 uppercase">
                   Based in
-                </span>
+                </p>
 
-                <p className="mt-4 text-sm text-white/65">
+                <p className="text-sm text-white/55">
                   Hyderabad, India
                 </p>
               </div>
@@ -145,23 +118,12 @@ function Footer() {
           </div>
         </div>
 
-        <div
-          className="
-            mt-20
-            flex flex-col gap-5
-            border-t border-white/10
-            pt-6
-            text-xs text-white/40
-            md:flex-row
-            md:items-center
-            md:justify-between
-          "
-        >
-          <span>© 2026 Pixelvaan. All rights reserved.</span>
+        <div className="flex flex-col justify-between gap-6 border-t border-white/10 pt-7 text-xs text-white/35 sm:flex-row sm:items-center">
+          <p>© 2026 Pixelvaan. All rights reserved.</p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-7">
             <a
-              href="#home"
+              href="#contact"
               className="transition-colors duration-300 hover:text-white"
             >
               Privacy

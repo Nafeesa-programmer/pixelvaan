@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 
 const services = [
   {
@@ -7,258 +8,162 @@ const services = [
     title: "Web Design",
     description:
       "Digital experiences with strong visual systems, clear hierarchy, and interfaces designed around how people actually move.",
+    details:
+      "From early concepts to polished interface systems, we create distinctive digital experiences that balance visual impact with usability.",
   },
   {
     number: "02",
     title: "Development",
     description:
       "Fast, responsive, production-ready websites engineered for reliability, performance, accessibility, and scale.",
+    details:
+      "We turn approved designs into robust, responsive products using modern frontend architecture, thoughtful interactions, and production-ready code.",
   },
   {
     number: "03",
     title: "Brand Identity",
     description:
-      "Distinctive visual identities that give ambitious brands a recognizable presence across every digital touchpoint.",
+      "Distinctive visual identities that give ambitious brands a clear and memorable presence.",
+    details:
+      "We build cohesive identity systems across typography, visual language, digital touchpoints, and the details that make a brand recognizable.",
   },
   {
     number: "04",
-    title: "Digital Products",
+    title: "Digital Product",
     description:
-      "Thoughtful product experiences that turn complex ideas into intuitive, useful, and memorable digital tools.",
+      "Intuitive product experiences that make complex ideas easier to understand, use, and remember.",
+    details:
+      "We shape product experiences around real user journeys, combining strategy, interface design, interaction, and scalable systems.",
   },
   {
     number: "05",
     title: "Strategy",
     description:
-      "Clear digital direction connecting business goals, audience needs, content, design, and technology.",
+      "Clear digital direction that connects business goals, audience needs, brand positioning, and experience.",
+    details:
+      "Before pixels and code, we help define what should be built, who it is for, and how the digital experience should create meaningful value.",
   },
 ];
 
 function Services() {
+  const [activeService, setActiveService] = useState(null);
+
+  const toggleService = (number) => {
+    setActiveService((current) =>
+      current === number ? null : number
+    );
+  };
+
   return (
     <section
       id="services"
-      className="
-        relative
-        scroll-mt-28
-        overflow-hidden
-        bg-[#f1eee8]
-        px-[clamp(20px,5vw,72px)]
-        py-[clamp(100px,13vw,190px)]
-        text-black
-      "
+      className="relative scroll-mt-28 overflow-hidden bg-[#f1eee8] px-[clamp(20px,5vw,72px)] py-[clamp(100px,13vw,190px)] text-black"
     >
-      <div className="mx-auto max-w-[1440px]">
-        <div className="border-t border-black/20 pt-6">
-          <div className="flex items-center gap-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-black" />
-
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/55">
+      <div className="mx-auto max-w-[1500px]">
+        <div className="mb-[clamp(70px,9vw,120px)] flex flex-col justify-between gap-8 md:flex-row md:items-end">
+          <div>
+            <p className="mb-6 text-[11px] font-medium tracking-[0.22em] text-black/45 uppercase">
               What we do
-            </span>
+            </p>
+
+            <h2 className="max-w-[900px] text-[clamp(48px,7.5vw,112px)] font-medium leading-[0.9] tracking-[-0.065em]">
+              Built around
+              <br />
+              what matters.
+            </h2>
           </div>
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{
-            duration: 0.9,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            mt-16
-            max-w-[1000px]
-            md:mt-24
-          "
-        >
-          <h2
-            className="
-              text-[clamp(3.2rem,8vw,8rem)]
-              font-medium
-              leading-[0.88]
-              tracking-[-0.065em]
-            "
-          >
-            Built for brands
-            <span className="text-black/40">
-              {" "}
-              that want more.
-            </span>
-          </h2>
-        </motion.div>
-
-        <div className="mt-24 border-t border-black/20 md:mt-32">
-          {services.map((service, index) => (
-            <motion.article
-              key={service.number}
-              initial={{
-                opacity: 0,
-                y: 40,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.15,
-              }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.04,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                group
-                relative
-                grid
-                border-b border-black/20
-                py-10
-                transition-colors duration-500
-                md:grid-cols-[80px_1fr_1fr_60px]
-                md:items-center
-                md:gap-8
-                md:py-14
-                lg:grid-cols-[100px_1.2fr_1fr_70px]
-              "
-            >
-              <span
-                className="
-                  mb-5
-                  text-xs
-                  font-medium
-                  tracking-[0.16em]
-                  text-black/45
-                  transition-colors duration-500
-                  group-hover:text-black
-                  md:mb-0
-                "
-              >
-                {service.number}
-              </span>
-
-              <h3
-                className="
-                  text-[clamp(2.1rem,5vw,5rem)]
-                  font-medium
-                  leading-none
-                  tracking-[-0.055em]
-                  transition-transform duration-500
-                  ease-[cubic-bezier(.22,1,.36,1)]
-                  group-hover:translate-x-2
-                  md:group-hover:translate-x-3
-                "
-              >
-                {service.title}
-              </h3>
-
-              <p
-                className="
-                  mt-6
-                  max-w-md
-                  text-sm
-                  leading-7
-                  text-black/65
-                  transition-colors duration-500
-                  group-hover:text-black/85
-                  md:mt-0
-                  md:text-base
-                "
-              >
-                {service.description}
-              </p>
-
-              <span
-                className="
-                  mt-8
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  self-end
-                  rounded-full
-                  border border-black/20
-                  transition-all duration-500
-                  group-hover:rotate-45
-                  group-hover:border-black
-                  group-hover:bg-black
-                  group-hover:text-white
-                  md:mt-0
-                  md:justify-self-end
-                "
-              >
-                <ArrowUpRight
-                  size={17}
-                  strokeWidth={1.5}
-                />
-              </span>
-            </motion.article>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{
-            duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            mt-10
-            flex
-            flex-col
-            gap-6
-            md:flex-row
-            md:items-center
-            md:justify-between
-          "
-        >
-          <p className="max-w-md text-sm leading-6 text-black/55">
-            From first idea to final launch, we bring
-            strategy, design, and technology together.
+          <p className="max-w-[320px] text-sm leading-6 text-black/50 md:pb-2">
+            Strategy, design and technology brought together to create digital
+            experiences with purpose.
           </p>
+        </div>
 
-          <a
-            href="#contact"
-            className="
-              group
-              flex
-              w-fit
-              items-center
-              gap-3
-              text-sm
-              font-medium
-              text-black
-            "
-          >
-            <span>Start a conversation</span>
+        <div className="border-t border-black/15">
+          {services.map((service) => {
+            const isActive = activeService === service.number;
 
-            <span
-              className="
-                flex
-                h-9
-                w-9
-                items-center
-                justify-center
-                rounded-full
-                border border-black/20
-                transition-all duration-500
-                group-hover:rotate-45
-                group-hover:bg-black
-                group-hover:text-white
-              "
-            >
-              <ArrowUpRight
-                size={15}
-                strokeWidth={1.5}
-              />
-            </span>
-          </a>
-        </motion.div>
+            return (
+              <motion.div
+                key={service.number}
+                layout
+                className="group border-b border-black/15"
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleService(service.number)}
+                  aria-expanded={isActive}
+                  className={`flex w-full cursor-pointer flex-col gap-8 py-8 text-left transition-all duration-500 md:grid md:grid-cols-[90px_1fr_1fr_70px] md:items-center md:py-10 ${
+                    isActive
+                      ? "md:pb-7"
+                      : "hover:bg-black hover:px-6 hover:text-white md:hover:px-8"
+                  }`}
+                >
+                  <span
+                    className={`text-[10px] tracking-[0.18em] transition-colors duration-500 ${
+                      isActive
+                        ? "text-black/40"
+                        : "text-black/40 group-hover:text-white/45"
+                    }`}
+                  >
+                    {service.number}
+                  </span>
+
+                  <span className="text-[clamp(40px,5.5vw,78px)] font-medium leading-[0.9] tracking-[-0.06em]">
+                    {service.title}
+                  </span>
+
+                  <span
+                    className={`max-w-[520px] text-sm leading-6 transition-colors duration-500 md:text-[15px] ${
+                      isActive
+                        ? "text-black/60"
+                        : "text-black/55 group-hover:text-white/65"
+                    }`}
+                  >
+                    {service.description}
+                  </span>
+
+                  <span
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
+                      isActive
+                        ? "rotate-45 border-black bg-black text-white"
+                        : "border-black/15 group-hover:border-white/25 group-hover:bg-white group-hover:text-black"
+                    }`}
+                  >
+                    <ArrowUpRight size={18} strokeWidth={1.5} />
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isActive && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{
+                        duration: 0.45,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <div className="grid gap-6 pb-10 md:grid-cols-[90px_1fr_1fr_70px]">
+                        <div />
+
+                        <div className="md:col-span-2">
+                          <p className="max-w-[650px] text-lg leading-8 text-black/65">
+                            {service.details}
+                          </p>
+                        </div>
+
+                        <div />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
